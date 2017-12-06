@@ -51,12 +51,29 @@ Router::scope(
     }
 );
 
+/*
+Router::scope(
+    '/backend',
+    function ($routes) {
+        $routes->scope('/backend', function ($routes) {
+            $routes->loadPlugin('ContactManager');
+        });
+    }
+);
+*/
+
 Router::scope('/', function ($routes) {
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
+    $routes->scope('/backend', function ($routes) {
+        $routes->scope('/backend', function ($routes) {
+            $routes->loadPlugin('ContactManager');
+        });
+    });
+
     $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
     /**

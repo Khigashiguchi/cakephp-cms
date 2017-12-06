@@ -207,6 +207,8 @@ Type::build('timestamp')
  * Plugin::load('Migrations'); //Loads a single plugin named Migrations
  *
  */
+Plugin::load('ContactManager', ['bootstrap' => false, 'routes' => true]);
+Plugin::loadAll();
 
 /*
  * Only try to load DebugKit in development mode
@@ -216,4 +218,3 @@ if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
 
-Plugin::load('ContactManager', ['bootstrap' => false, 'routes' => true]);
